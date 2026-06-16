@@ -1,0 +1,378 @@
+{
+  "createdAt": "2026-06-13T02:11:29.626Z",
+  "source": "https://www.themealdb.com/images/ingredients/",
+  "count": 49,
+  "failed": [
+    {
+      "name": "couve flor",
+      "ingredient": "Cauliflower",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "chuchu",
+      "ingredient": "Chayote",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "rabanete",
+      "ingredient": "Radishes",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "berga pokan",
+      "ingredient": "Tangerine",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "berga cai",
+      "ingredient": "Tangerine",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "caqui mel",
+      "ingredient": "Persimmon",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "caqui branco",
+      "ingredient": "Persimmon",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "caqui chocolate",
+      "ingredient": "Persimmon",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "uva",
+      "ingredient": "Grapes",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "melancia",
+      "ingredient": "Watermelon",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "maracuja",
+      "ingredient": "Passion Fruit",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "melao espanhol barato",
+      "ingredient": "Melon",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "melao rei",
+      "ingredient": "Melon",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "uva sem semente",
+      "ingredient": "Grapes",
+      "error": "404 text/html; charset=utf-8"
+    },
+    {
+      "name": "pera importada",
+      "ingredient": "Pear",
+      "error": "404 text/html; charset=utf-8"
+    }
+  ],
+  "files": [
+    {
+      "name": "abobrinha",
+      "ingredient": "Zucchini",
+      "fileName": "3002-abobrinha.png",
+      "bytes": 286217
+    },
+    {
+      "name": "alho poro",
+      "ingredient": "Leek",
+      "fileName": "4017-alho-poro.png",
+      "bytes": 310036
+    },
+    {
+      "name": "batata doce rosa",
+      "ingredient": "Sweet Potatoes",
+      "fileName": "3008-batata-doce-rosa.png",
+      "bytes": 324365
+    },
+    {
+      "name": "berinjela",
+      "ingredient": "Aubergine",
+      "fileName": "3009-berinjela.png",
+      "bytes": 438084
+    },
+    {
+      "name": "beterraba molho",
+      "ingredient": "Beetroot",
+      "fileName": "3029-beterraba-molho.png",
+      "bytes": 406112
+    },
+    {
+      "name": "brocolis",
+      "ingredient": "Broccoli",
+      "fileName": "4016-brocolis.png",
+      "bytes": 709694
+    },
+    {
+      "name": "cenoura top papelao",
+      "ingredient": "Carrots",
+      "fileName": "3012-cenoura-top-papelao.png",
+      "bytes": 205109
+    },
+    {
+      "name": "gengibre",
+      "ingredient": "Ginger",
+      "fileName": "3014-gengibre.png",
+      "bytes": 293601
+    },
+    {
+      "name": "milho verde",
+      "ingredient": "Sweetcorn",
+      "fileName": "4018-milho-verde.png",
+      "bytes": 504348
+    },
+    {
+      "name": "moranga cabutia",
+      "ingredient": "Pumpkin",
+      "fileName": "3015-moranga-cabutia.png",
+      "bytes": 417338
+    },
+    {
+      "name": "pepino japones",
+      "ingredient": "Cucumber",
+      "fileName": "3017-pepino-japones.png",
+      "bytes": 370095
+    },
+    {
+      "name": "pepino salada",
+      "ingredient": "Cucumber",
+      "fileName": "3016-pepino-salada.png",
+      "bytes": 370095
+    },
+    {
+      "name": "pimentao verde",
+      "ingredient": "Red Pepper",
+      "fileName": "3018-pimentao-verde.png",
+      "bytes": 364314
+    },
+    {
+      "name": "pimentao colorido",
+      "ingredient": "Red Pepper",
+      "fileName": "3019-pimentao-colorido.png",
+      "bytes": 364314
+    },
+    {
+      "name": "pinhao top",
+      "ingredient": "Pine Nuts",
+      "fileName": "3020-pinhao-top.png",
+      "bytes": 569134
+    },
+    {
+      "name": "repolho verde",
+      "ingredient": "Cabbage",
+      "fileName": "4019-repolho-verde.png",
+      "bytes": 438817
+    },
+    {
+      "name": "repolho roxo",
+      "ingredient": "Red Cabbage",
+      "fileName": "4020-repolho-roxo.png",
+      "bytes": 786340
+    },
+    {
+      "name": "tomate lv",
+      "ingredient": "Tomatoes",
+      "fileName": "3022-tomate-lv.png",
+      "bytes": 430399
+    },
+    {
+      "name": "tomate rasteiro",
+      "ingredient": "Tomatoes",
+      "fileName": "3023-tomate-rasteiro.png",
+      "bytes": 430399
+    },
+    {
+      "name": "tomate italiano",
+      "ingredient": "Tomatoes",
+      "fileName": "3028-tomate-italiano.png",
+      "bytes": 430399
+    },
+    {
+      "name": "vagem bdj c6",
+      "ingredient": "Green Beans",
+      "fileName": "4022-vagem-bdj-c6.png",
+      "bytes": 220987
+    },
+    {
+      "name": "tomate cereja bdj",
+      "ingredient": "Cherry Tomatoes",
+      "fileName": "4021-tomate-cereja-bdj.png",
+      "bytes": 230546
+    },
+    {
+      "name": "alface americana",
+      "ingredient": "Lettuce",
+      "fileName": "4003-alface-americana.png",
+      "bytes": 455339
+    },
+    {
+      "name": "ceu",
+      "ingredient": "Orange",
+      "fileName": "2011-ceu.png",
+      "bytes": 444985
+    },
+    {
+      "name": "laranja umbigo",
+      "ingredient": "Orange",
+      "fileName": "2012-laranja-umbigo.png",
+      "bytes": 444985
+    },
+    {
+      "name": "suco",
+      "ingredient": "Orange",
+      "fileName": "2010-suco.png",
+      "bytes": 444985
+    },
+    {
+      "name": "limao",
+      "ingredient": "Lime",
+      "fileName": "2014-limao.png",
+      "bytes": 599416
+    },
+    {
+      "name": "alface crespa",
+      "ingredient": "Lettuce",
+      "fileName": "4000-alface-crespa.png",
+      "bytes": 455339
+    },
+    {
+      "name": "alface lisa",
+      "ingredient": "Lettuce",
+      "fileName": "4001-alface-lisa.png",
+      "bytes": 455339
+    },
+    {
+      "name": "salsa",
+      "ingredient": "Parsley",
+      "fileName": "4006-salsa.png",
+      "bytes": 294589
+    },
+    {
+      "name": "tempero verde",
+      "ingredient": "Spring Onions",
+      "fileName": "4005-tempero-verde.png",
+      "bytes": 119344
+    },
+    {
+      "name": "rucula",
+      "ingredient": "Rocket",
+      "fileName": "4008-rucula.png",
+      "bytes": 337641
+    },
+    {
+      "name": "couve folha",
+      "ingredient": "Kale",
+      "fileName": "4012-couve-folha.png",
+      "bytes": 517058
+    },
+    {
+      "name": "couve manteiga",
+      "ingredient": "Kale",
+      "fileName": "4013-couve-manteiga.png",
+      "bytes": 517058
+    },
+    {
+      "name": "espinafre",
+      "ingredient": "Spinach",
+      "fileName": "4011-espinafre.png",
+      "bytes": 432891
+    },
+    {
+      "name": "formosa capixaba",
+      "ingredient": "Papaya",
+      "fileName": "2023-formosa-capixaba.png",
+      "bytes": 411885
+    },
+    {
+      "name": "papaia capixaba",
+      "ingredient": "Papaya",
+      "fileName": "2024-papaia-capixaba.png",
+      "bytes": 411885
+    },
+    {
+      "name": "cebola roxa",
+      "ingredient": "Red Onion",
+      "fileName": "3004-cebola-roxa.png",
+      "bytes": 412292
+    },
+    {
+      "name": "batata branca",
+      "ingredient": "Potatoes",
+      "fileName": "3005-batata-branca.png",
+      "bytes": 324365
+    },
+    {
+      "name": "cebola cx3",
+      "ingredient": "Onion",
+      "fileName": "3011-cebola-cx3.png",
+      "bytes": 396340
+    },
+    {
+      "name": "alho",
+      "ingredient": "Garlic",
+      "fileName": "3003-alho.png",
+      "bytes": 295949
+    },
+    {
+      "name": "moranguinho extra",
+      "ingredient": "Strawberries",
+      "fileName": "2025-moranguinho-extra.png",
+      "bytes": 496461
+    },
+    {
+      "name": "moranguinho",
+      "ingredient": "Strawberries",
+      "fileName": "2025-moranguinho.png",
+      "bytes": 496461
+    },
+    {
+      "name": "abacaxi graudo",
+      "ingredient": "Pineapple",
+      "fileName": "2041-abacaxi-graudo.png",
+      "bytes": 429464
+    },
+    {
+      "name": "manga",
+      "ingredient": "Mango",
+      "fileName": "2021-manga.png",
+      "bytes": 270383
+    },
+    {
+      "name": "fuji",
+      "ingredient": "Apples",
+      "fileName": "2018-fuji.png",
+      "bytes": 428375
+    },
+    {
+      "name": "gala",
+      "ingredient": "Apples",
+      "fileName": "2019-gala.png",
+      "bytes": 428375
+    },
+    {
+      "name": "abacate",
+      "ingredient": "Avocado",
+      "fileName": "2001-abacate.png",
+      "bytes": 562274
+    },
+    {
+      "name": "umbigo importada",
+      "ingredient": "Orange",
+      "fileName": "2013-umbigo-importada.png",
+      "bytes": 444985
+    }
+  ]
+}

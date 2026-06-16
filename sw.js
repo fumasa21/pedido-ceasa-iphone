@@ -1,4 +1,4 @@
-const CACHE_NAME = "pedido-ceasa-iphone-v1";
+const CACHE_NAME = "pedido-ceasa-iphone-v2";
 const ASSETS = [
   "./",
   "./index.html",

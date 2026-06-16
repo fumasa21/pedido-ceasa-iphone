@@ -2,6 +2,72 @@ const STORAGE_KEY = "pedido-ceasa-iphone-state-v1";
 const SORT_KEY = "pedido-ceasa-iphone-sort-v1";
 const WEBER_XML_EMIT_CNPJ = "06048063000102";
 const WEBER_XML_DEST_CNPJ = "31204831000109";
+const PRODUCT_IMAGE_FILES = {
+  "1474": "1474-uva-sem-semente.png",
+  "2001": "2001-abacate.png",
+  "2004": "2004-berga-pokan.png",
+  "2007": "2007-caqui-branco.png",
+  "2010": "2010-suco.png",
+  "2011": "2011-ceu.png",
+  "2012": "2012-laranja-umbigo.png",
+  "2013": "2013-umbigo-importada.png",
+  "2014": "2014-limao.png",
+  "2017": "2017-melao-rei.png",
+  "2018": "2018-fuji.png",
+  "2019": "2019-gala.png",
+  "2021": "2021-manga.png",
+  "2022": "2022-maracuja.png",
+  "2023": "2023-formosa-capixaba.png",
+  "2024": "2024-papaia-capixaba.png",
+  "2025": "2025-moranguinho.png",
+  "2030": "2030-pera-importada.png",
+  "2041": "2041-abacaxi-graudo.png",
+  "2043": "2043-uva.png",
+  "2044": "2044-melao-espanhol-barato.png",
+  "2056": "2056-caqui-chocolate.png",
+  "2059": "2059-caqui-mel.png",
+  "2066": "2066-berga-cai.png",
+  "3002": "3002-abobrinha.png",
+  "3003": "3003-alho.png",
+  "3004": "3004-cebola-roxa.png",
+  "3005": "3005-batata-branca.png",
+  "3008": "3008-batata-doce-rosa.png",
+  "3009": "3009-berinjela.png",
+  "3011": "3011-cebola-cx3.png",
+  "3012": "3012-cenoura-top-papelao.png",
+  "3013": "3013-chuchu.png",
+  "3014": "3014-gengibre.png",
+  "3015": "3015-moranga-cabutia.png",
+  "3016": "3016-pepino-salada.png",
+  "3017": "3017-pepino-japones.png",
+  "3018": "3018-pimentao-verde.png",
+  "3019": "3019-pimentao-colorido.png",
+  "3020": "3020-pinhao-top.png",
+  "3021": "3021-rabanete.png",
+  "3022": "3022-tomate-lv.png",
+  "3023": "3023-tomate-rasteiro.png",
+  "3028": "3028-tomate-italiano.png",
+  "3029": "3029-beterraba-molho.png",
+  "332": "332-uva.png",
+  "380": "380-melancia.png",
+  "4000": "4000-alface-crespa.png",
+  "4001": "4001-alface-lisa.png",
+  "4003": "4003-alface-americana.png",
+  "4005": "4005-tempero-verde.png",
+  "4006": "4006-salsa.png",
+  "4008": "4008-rucula.png",
+  "4011": "4011-espinafre.png",
+  "4012": "4012-couve-folha.png",
+  "4013": "4013-couve-manteiga.png",
+  "4015": "4015-couve-flor.png",
+  "4016": "4016-brocolis.png",
+  "4017": "4017-alho-poro.png",
+  "4018": "4018-milho-verde.png",
+  "4019": "4019-repolho-verde.png",
+  "4020": "4020-repolho-roxo.png",
+  "4021": "4021-tomate-cereja-bdj.png",
+  "4022": "4022-vagem-bdj-c6.png"
+};
 
 const initialVendors = [
   "andrei", "andre", "silvio", "lb", "dieguinho", "donato", "primo"
@@ -411,6 +477,9 @@ function productImage(product) {
 }
 
 function localProductImageFile(product) {
+  if (PRODUCT_IMAGE_FILES[String(product.code || "").trim()]) {
+    return PRODUCT_IMAGE_FILES[String(product.code).trim()];
+  }
   return productImageFileName(product);
 }
 

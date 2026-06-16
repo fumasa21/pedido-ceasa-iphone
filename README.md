@@ -31,6 +31,6 @@ Versao PWA separada do Pedido Ceasa para usar no iPhone pelo Safari.
 ## Observacoes
 
 - Esta versao usa armazenamento proprio: `pedido-ceasa-iphone-state-v1`.
-- O cache tambem e separado: `pedido-ceasa-iphone-v1`.
+- O cache tambem e separado: `pedido-ceasa-iphone-v2`.
 - O app atual e o projeto Android nao foram alterados para criar esta versao.
 - No iPhone, a instalacao como PWA deve ser feita pelo Safari.

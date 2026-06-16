@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#156f61">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Pedido Ceasa">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Pedido Ceasa iPhone</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Pedido Ceasa</h1>
+      <p id="orderStatus">Pedido em aberto</p>
+    </div>
+    <button id="installBtn" class="ghost hidden" type="button" title="Instalar App">Instalar</button>
+  </header>
+
+  <nav class="tabs" aria-label="Telas do app">
+    <button class="tab active" data-view="pedido" type="button">Pedido</button>
+    <button class="tab" data-view="historico" type="button">Historico</button>
+    <button class="tab" data-view="cadastros" type="button">Cadastros</button>
+    <button class="tab" data-view="backup" type="button">Backup</button>
+  </nav>
+
+  <main>
+    <section id="pedido" class="view active">
+      <div class="toolbar">
+        <label>
+          <span>Fornecedor</span>
+          <select id="vendorFilter"></select>
+        </label>
+        <label class="sort-control">
+          <span>Ordem</span>
+          <select id="productSort">
+            <option value="category">Categorias A-Z</option>
+            <option value="alpha">A-Z</option>
+            <option value="vendor">Fornecedor</option>
+            <option value="saved">Cadastro</option>
+            <option value="manual">Editor Principal</option>
+            <option value="favorites">Favoritos</option>
+          </select>
+        </label>
+        <label id="orderSaveTargetWrap" class="sort-control hidden">
+          <span>Salvar Em</span>
+          <select id="orderSaveTarget">
+            <option value="principal">Editor Principal</option>
+            <option value="favoritos">Favoritos</option>
+          </select>
+        </label>
+        <button id="manualOrderBtn" class="ghost sort-action hidden" type="button">Editar Ordem</button>
+      </div>
+
+      <div class="order-mode" aria-label="Etapa do pedido">
+        <button id="selectModeBtn" class="active" type="button">1. Selecionar</button>
+        <button id="costModeBtn" type="button">2. Lancar Custo X Venda</button>
+      </div>
+
+      <div class="actions">
+        <button id="exportTxtBtn" type="button">Enviar Drive Padrao</button>
+        <button id="exportXmlBtn" type="button">Enviar Drive XML Weber</button>
+        <button id="saveOrderBtn" type="button">Salvar No Historico</button>
+        <button id="clearOrderBtn" class="danger" type="button">Zerar Pedido</button>
+      </div>
+
+      <div id="costSummary" class="cost-summary hidden"></div>
+      <div id="costTools" class="cost-tools hidden">
+        <label class="check-row"><input id="pendingOnlyInput" type="checkbox"> Mostrar So Sem Custo</label>
+        <button id="nextCostBtn" type="button" class="ghost">Proximo Sem Custo</button>
+        <div class="cost-import">
+          <div class="cost-import-actions">
+            <button id="openCostTextBtn" type="button" class="ghost">Colar Mensagem</button>
+            <button id="readCostPhotoBtn" type="button" class="ghost">Ler Foto</button>
+            <input id="costPhotoInput" type="file" accept="image/*" class="hidden">
+          </div>
+          <div id="costTextPanel" class="cost-text-panel hidden">
+            <textarea id="costMessageInput" rows="5" placeholder="Cole Aqui A Mensagem Do Fornecedor Com Produtos E Valores"></textarea>
+            <div class="cost-import-actions">
+              <button id="parseCostTextBtn" type="button">Analisar Mensagem</button>
+              <button id="clearCostImportBtn" type="button" class="ghost">Limpar</button>
+            </div>
+          </div>
+          <div id="costImportReview" class="cost-import-review hidden"></div>
+        </div>
+      </div>
+      <div id="productList" class="product-list"></div>
+      <div id="vendorShareList" class="share-list"></div>
+    </section>
+
+    <section id="historico" class="view">
+      <div class="actions">
+        <button id="clearHistoryBtn" class="danger" type="button">Limpar Historico</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <section id="cadastros" class="view">
+      <div class="columns">
+        <form id="vendorForm" class="panel">
+          <h2>Fornecedores</h2>
+          <input type="hidden" id="vendorId">
+          <label>Nome Do Fornecedor<input id="vendorName" required></label>
+          <div class="actions">
+            <button type="submit">Salvar Fornecedor</button>
+            <button id="newVendorBtn" type="button" class="ghost">Novo</button>
+          </div>
+          <div id="vendorList" class="edit-list"></div>
+        </form>
+
+        <div id="productPanel" class="panel">
+          <h2>Produtos</h2>
+          <button id="openProductFormBtn" type="button" class="ghost wide-action">Novo Produto</button>
+          <div id="productFormSlot"></div>
+          <form id="productForm" class="product-form">
+            <input type="hidden" id="productId">
+            <div class="product-form-grid">
+              <label>Fornecedor<select id="productVendor" required></select></label>
+              <label>Codigo<input id="productCode" inputmode="numeric" placeholder="Ex: 3002"></label>
+              <label class="span-2">Produto<input id="productName" required></label>
+              <label>Embalagem<input id="packageLabel" placeholder="cx, un, molho"></label>
+              <label>Quantidade Na Embalagem<input id="packageSize" type="number" min="0.01" step="0.01" required></label>
+              <label>Unidade Base
+                <select id="baseUnit">
+                  <option value="kg">kg</option>
+                  <option value="un">un</option>
+                </select>
+              </label>
+              <label>Markup Padrao %<input id="productMarkup" type="text" inputmode="decimal" placeholder="Ex: 30,00"></label>
+            </div>
+            <label>Imagem Do Produto<input id="productImageUrl" class="compact-input" placeholder="Link Da Foto Ou Escolha Uma Imagem"></label>
+            <div class="image-edit-row">
+              <img id="productImagePreview" class="edit-image-preview" alt="">
+              <label class="file-button">Escolher Imagem<input id="productImageFile" type="file" accept="image/*"></label>
+              <button id="clearProductImageBtn" type="button" class="ghost">Remover Imagem</button>
+            </div>
+            <div class="actions">
+              <button type="submit">Salvar Produto</button>
+              <button id="newProductBtn" type="button" class="ghost">Novo</button>
+            </div>
+          </form>
+          <div id="editableProductList" class="edit-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="backup" class="view">
+      <div class="panel">
+        <h2>Backup</h2>
+        <p>O Backup Manual Salva Fornecedores, Produtos, Imagens Editadas, Pedido Aberto, Historico, Custos E Ordens Favoritas Em Um Arquivo.</p>
+        <div class="actions">
+          <button id="downloadBackupBtn" type="button">Baixar Backup</button>
+          <label class="file-button">Restaurar Backup<input id="restoreBackupInput" type="file" accept="application/json"></label>
+        </div>
+        <div class="tutorial">
+          <h3>Tutorial De Uso Real</h3>
+
+          <details open>
+            <summary>1. Fazer O Pedido Do Dia</summary>
+            <ol>
+              <li>Entre Na Aba Pedido.</li>
+              <li>Escolha O Fornecedor, Se Quiser Ver Apenas Um Vendedor.</li>
+              <li>Use A Lista Para Selecionar A Quantidade De Cada Produto.</li>
+              <li>Use O Controle Meia Para Meia Caixa Ou Meia Duzia.</li>
+              <li>Produto Selecionado Fica Com Codigo E Nome Em Vermelho.</li>
+              <li>No Final Da Pagina, Use O Botao WhatsApp Do Fornecedor Para Enviar So Os Produtos Dele.</li>
+            </ol>
+          </details>
+
+          <details>
+            <summary>2. Organizar A Ordem Dos Produtos</summary>
+            <ol>
+              <li>No Campo Ordem, Escolha Editor Principal Ou Favoritos.</li>
+              <li>Toque Em Editar Ordem.</li>
+              <li>Use As Setas Para Subir Ou Descer 1 Produto.</li>
+              <li>Use As Setas Com 5 Para Subir Ou Descer 5 Posicoes.</li>
+              <li>Toque Em Salvar Ordem.</li>
+              <li>Escolha Se Vai Salvar Em Editor Principal Ou Favoritos.</li>
+              <li>Confirme Para Gravar. Se Cancelar, A Ordem Volta Como Estava.</li>
+            </ol>
+          </details>
+
+          <details>
+            <summary>3. Receber Valores E Lancar Custo X Venda</summary>
+            <ol>
+              <li>Depois Que O Vendedor Mandar Os Valores, Entre Em Lancar Custo X Venda.</li>
+              <li>Digite O Custo Embalagem Em Cada Produto Ou Use Colar Mensagem Para Importar O Texto Do WhatsApp.</li>
+              <li>No App Android, Use Ler Foto Para Transformar A Foto Em Texto E Conferir Os Valores.</li>
+              <li>Confira Produto, Quantidade E Custo Antes De Aplicar.</li>
+              <li>Se O Pedido For Meia Caixa Ou Meia Duzia, Digite O Valor Pago Pela Meia Embalagem.</li>
+              <li>O App Calcula O Custo Por Kg Ou Unidade Corretamente.</li>
+              <li>Use Markup % Ou Preco Venda Para Ajustar A Venda.</li>
+              <li>Se O Preco Venda Ficar Abaixo Do Custo, O Markup Aparece Negativo.</li>
+            </ol>
+          </details>
+
+          <details>
+            <summary>4. Enviar Para Weber Sistemas</summary>
+            <ol>
+              <li>Confira Se Todos Os Produtos Do Pedido Tem Codigo.</li>
+              <li>Confira Se Todos Os Produtos Ja Tem Custo Lancado.</li>
+              <li>Use Enviar Drive Padrao Para Gerar O TXT Do Layout Padrao Da Weber.</li>
+              <li>Use Enviar Drive XML Weber Para Gerar Um XML MOD 99 Para Testar No Botao NFe-XML.</li>
+              <li>O Numero Da Nota Do XML E Automatico E Nao Se Repete.</li>
+              <li>Envie Ou Salve O Arquivo No Google Drive.</li>
+              <li>No Weber, Importe Pelo Botao Correspondente Ao Arquivo Gerado.</li>
+            </ol>
+          </details>
+
+          <details>
+            <summary>5. Cadastros De Produtos E Fornecedores</summary>
+            <ol>
+              <li>Entre Na Aba Cadastros.</li>
+              <li>Cadastre Ou Edite Fornecedores Na Coluna Fornecedores.</li>
+              <li>Para Criar Produto, Toque Em Novo Produto.</li>
+              <li>Para Editar Produto Existente, Toque Em Editar No Produto Da Lista.</li>
+              <li>O Editor Abre Abaixo Do Produto Escolhido.</li>
+              <li>Informe Codigo, Nome, Embalagem, Quantidade, Unidade Base, Markup Padrao E Imagem.</li>
+              <li>Toque Em Salvar Produto.</li>
+            </ol>
+          </details>
+
+          <details>
+            <summary>6. Backup E Restauracao</summary>
+            <ol>
+              <li>Use Baixar Backup Para Salvar Todos Os Dados Importantes Do App.</li>
+              <li>Esse Arquivo Guarda Cadastros, Produtos, Imagens Editadas, Pedido Aberto, Historico, Custos E Ordens.</li>
+              <li>Guarde O Arquivo No Google Drive Ou Em Lugar Seguro.</li>
+              <li>Use Restaurar Backup Para Voltar Esses Dados Em Outro Celular Ou Apos Reinstalar.</li>
+              <li>A Restauracao Substitui Os Dados Atuais, Entao O App Sempre Pede Confirmacao.</li>
+            </ol>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="productTemplate">
+    <article class="product-card">
+      <div class="product-main">
+        <div class="order-controls">
+          <div class="move-group">
+            <button class="move-up" type="button" title="Subir Produto">↑</button>
+            <button class="move-down" type="button" title="Descer Produto">↓</button>
+          </div>
+          <div class="move-group">
+            <button class="move-up-five" type="button" title="Subir 5 Produtos">↑5</button>
+            <button class="move-down-five" type="button" title="Descer 5 Produtos">↓5</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3></h3>
+          <p></p>
+          <div class="cost-line">
+            <strong class="unit-cost">R$ 0,00</strong>
+            <span class="product-total"></span>
+          </div>
+        </div>
+        <img class="product-image" alt="">
+        <div class="qty-controls">
+          <div class="qty-stepper" aria-label="Selecionar Quantidade">
+            <button class="qty-minus" type="button" title="Diminuir Quantidade">-</button>
+            <input class="qty" type="number" min="0" step="1" aria-label="Quantidade De Caixas">
+            <button class="qty-plus" type="button" title="Aumentar Quantidade">+</button>
+          </div>
+          <div class="half-stepper" aria-label="Selecionar Meia Embalagem">
+            <span>Meia</span>
+            <div class="half-controls">
+              <button class="half-minus" type="button" title="Tirar Meia Embalagem">-</button>
+              <input class="qty-fraction" type="hidden">
+              <strong class="half-display">0</strong>
+              <button class="half-plus" type="button" title="Adicionar Meia Embalagem">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-fields">
+        <label><span class="cost-label">Custo Embalagem</span><input class="box-price" type="text" inputmode="decimal"></label>
+        <label><span class="cost-label">Markup %</span><input class="markup" type="text" inputmode="decimal"></label>
+        <label><span class="cost-label">Preco Venda</span><input class="sale-price-input" type="text" inputmode="decimal"></label>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
